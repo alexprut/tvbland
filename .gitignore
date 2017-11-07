@@ -1,1 +1,7 @@
 .idea
+.DS_Store
+node_modules
+dist/css
+dist/fonts
+dist/img
+dist/*.js
