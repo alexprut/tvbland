@@ -5,6 +5,7 @@
 [![MIT](https://img.shields.io/dub/l/vibe-d.svg?style=flat-square)](https://github.com/alexprut/tvbland/blob/master/LICENSE)
 [![CSS BEM](https://img.shields.io/badge/css-bem-blue.svg?style=flat-square)](https://en.bem.info/)
 [![Dependencies](https://david-dm.org/alexprut/tvbland.svg?style=flat-square)](https://david-dm.org/alexprut/tvbland)
+[![Build Status](http://img.shields.io/travis/alexprut/tvbland/master.svg)](https://travis-ci.org/alexprut/tvbland)
 </div>
 
 # Challenge
