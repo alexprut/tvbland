@@ -21,7 +21,7 @@ and each of the Episodes should link to a [Show](https://www.tvmaze.com/api#show
 CSS Modules, and CSS-in-JS are all encouraged
 - [ ] The site should be built using responsive techniques to behave well on a variety of devices
 - [x] The site should function as a single page application
-- [ ] The site should support the last 2 versions of Chrome, Firefox, Safari, Edge and Internet Explorer
+- [x] The site should support the last 2 versions of Chrome, Firefox, Safari, Edge and Internet Explorer
 - [x] We encourage the use of a framework - our preference is React.
 - [x] The use of a build tool
 - [ ] Responsive images

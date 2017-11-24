@@ -130,6 +130,7 @@ a:hover {
   width: 160px;
   background: url("/img/default-show-image.png") center center;
   background-size: cover;
+  filter: grayscale(100%);
   background: $gray;
 }
 

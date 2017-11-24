@@ -45,7 +45,7 @@ module.exports = {
       {
         test: /\.scss/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader']
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'resolve-url-loader', 'sass-loader']
       }
     ]
   }
