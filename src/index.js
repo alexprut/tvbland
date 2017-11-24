@@ -11,11 +11,19 @@ import {
 } from 'react-router-dom'
 
 function ShowThumbnail (props) {
+  const ratingFullStars = [...Array(props.rating)].map((e, i) =>
+    <i className='fa fa-star' aria-hidden='true' />
+  )
+  const ratingEmptyStars = [...Array(5 - props.rating)].map((e, i) =>
+    <i className='fa fa-star-o' aria-hidden='true' />
+  )
+  const displayRatingStars = ratingFullStars.concat(ratingEmptyStars)
+
   return (
     <div className='show-thumbnail'>
       <div className='show-thumbnail__image' style={{background: 'url(' + props.img + ')'}} />
       <div className='show-thumbnail__rating'>
-        <i className='fa fa-star' aria-hidden='true' />
+        {displayRatingStars}
       </div>
       <div className='show-thumbnail__description'>
         <Link to={`/show/${props.id}`}>{props.title}</Link>
@@ -27,7 +35,8 @@ function ShowThumbnail (props) {
 ShowThumbnail.propTypes = {
   img: PropTypes.string,
   id: PropTypes.number,
-  title: PropTypes.string
+  title: PropTypes.string,
+  rating: PropTypes.number
 }
 
 function Footer (props) {
@@ -76,7 +85,7 @@ Show.propTypes = {
 
 function HomePage (props) {
   const displayedShows = props.shows.map((e) =>
-    <ShowThumbnail key={e.id + Math.random()} title={e.title} img={e.image} id={e.id} />
+    <ShowThumbnail key={e.id + Math.random()} title={e.title} img={e.image} id={e.id} rating={e.rating} />
   )
 
   return (
