@@ -30,13 +30,18 @@ a:hover {
   color: $black;
 }
 
+.fa {
+  margin-right: 3px;
+}
+
 /**
  Application
  */
 .app-container {
   position: relative;
-  width: 1242px;
-  margin: 60px auto 0 auto;
+  width: 1176px;
+  margin: 30px auto 0 auto;
+  padding: 30px 30px 0 30px;
 }
 
 .app-background-helper {
@@ -49,25 +54,26 @@ a:hover {
 
 .app-content__title {
   font-size: 30px;
-  margin-bottom: 20px;
+  margin: 0 0 30px 0;
 }
 
 .app-title {
   font-weight: bold;
   font-size: 30px;
-  margin-bottom: 60px;
+  margin: 0 0 60px 0;
 }
 
 .app-description {
   color: $gray-dark;
   font-size: 30px;
-  max-width: 840px;
+  max-width: 804px;
   font-weight: 300;
   line-height: 42px;
+  margin: 0 0 120px 0;
 }
 
 .app-content {
-  margin-top: 120px;
+  position: relative;
 }
 
 .app-content::after {
@@ -111,13 +117,15 @@ a:hover {
  Show Thumbnail
  */
 .show-thumbnail {
+  position: relative;
+  left: -18px;
   width: 160px;
   float: left;
-  margin: 20px 40px 20px 0;
+  margin: 0 18px 18px 18px;
 }
 
 .show-thumbnail__image {
-  margin-bottom: 10px;
+  margin: 0 0 6px 0;
   height: 240px;
   width: 160px;
   background: url("/img/default-show-image.png") center center;
@@ -126,10 +134,24 @@ a:hover {
 }
 
 .show-thumbnail__rating {
-
+  margin: 0 0 6px 0;
 }
 
 .show-thumbnail__description {
-  font-size: 13px;
-  height: 50px;
+  font-size: 12px;
+  line-height: 18px;
+  min-height: 54px;
+  overflow: hidden;
+}
+
+@media (max-width: 1176px) {
+  .app-container {
+    width: auto;
+  }
+}
+
+@media (max-width: 804px) {
+  .app-description {
+    width: auto;
+  }
 }
