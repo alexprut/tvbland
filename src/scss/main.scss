@@ -13,8 +13,10 @@ body {
 }
 
 footer {
+  clear: both;
   min-height: 100px;
   background-color: $gray-light;
+  clear: both;
 }
 
 a {
@@ -60,7 +62,7 @@ a:hover {
 .app-title {
   font-weight: bold;
   font-size: 30px;
-  margin: 0 0 60px 0;
+  margin: 0 0 120px 0;
 }
 
 .app-description {
@@ -86,31 +88,72 @@ a:hover {
  Show
  */
 .show {
-
+  margin: 0 0 0 60px;
 }
 
 .show__image {
-
+  float: left;
+  height: 400px;
+  width: 272px;
+  margin: 0 30px 30px 0;
+  background: url("/img/default-show-image.png");
+  background-position: center center;
+  background-size: cover;
+  filter: grayscale(100%);
 }
 
 .show__rating {
-
+  padding: 30px 0 0 0;
+  margin: 0 0 12px 0;
 }
 
 .show__title {
-
+  font-size: 36px;
+  line-height: 42px;
+  margin: 0 0 18px 0;
 }
 
 .show__description {
-
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .show__info {
-
+  float: left;
+  clear: left;
+  width: 48%;
 }
 
 .show__staring  {
+  float: right;
+  width: 48%;
+}
 
+.show::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.block {
+  line-height: 84px;
+  font-size: 18px;
+  vertical-align: middle;
+  border-bottom: solid 2px $gray;
+}
+
+.block__title {
+  color: $gray-dark;
+  min-width: 216px;
+  display: inline-block;
+}
+
+.block__info {
+  color: $gray;
+  display: inline-block;
+}
+
+.block__img {
 }
 
 /**
@@ -128,7 +171,8 @@ a:hover {
   margin: 0 0 6px 0;
   height: 240px;
   width: 160px;
-  background: url("/img/default-show-image.png") center center;
+  background: url("/img/default-show-image.png");
+  background-position: center center;
   background-size: cover;
   filter: grayscale(100%);
   background: $gray;

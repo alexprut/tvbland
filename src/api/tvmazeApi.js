@@ -12,7 +12,8 @@ export function getFullSchedule (context, callback) {
         if (e && e.show && e.show.image && e.show.network) {
           newState.push({
             id: e.show.id,
-            title: e.name,
+            title: e.show.name,
+            description: stripHtml(e.show.summary),
             rating: (e.show.rating.average) ? fromBaseToBase(e.show.rating.average, 10, 5) : 0,
             image: e.show.image.medium,
             info: {
@@ -43,6 +44,13 @@ export function getShowCast (context, callback, showId) {
 
 function fromBaseToBase (number, currentBase, desiredBase) {
   return Math.round(number * desiredBase / currentBase)
+}
+
+// TODO this function should not be here (in some utility library)
+function stripHtml (html) {
+  let tmp = document.createElement('div')
+  tmp.innerHTML = html
+  return tmp.textContent || tmp.innerText || ''
 }
 
 // TODO convert machine readable dates in human readable dates
