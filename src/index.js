@@ -10,6 +10,14 @@ import {
   Link
 } from 'react-router-dom'
 
+function getbaseUrl () {
+  if (process.env.NODE_ENV === 'production') {
+    return '/tvbland/'
+  }
+
+  return '/'
+}
+
 function ShowThumbnail (props) {
   const ratingFullStars = [...Array(props.rating)].map((e, i) =>
     <i className='fa fa-star' aria-hidden='true' />
@@ -27,7 +35,7 @@ function ShowThumbnail (props) {
         {displayRatingStars}
       </div>
       <div className='show-thumbnail__description'>
-        <Link to={`/show/${props.id}`}>{props.title}</Link>
+        <Link to={`${getbaseUrl()}show/${props.id}`}>{props.title}</Link>
       </div>
     </div>
   )
@@ -175,12 +183,12 @@ class Application extends React.Component {
           <div className='app-background-helper' />
           <div className='app-container'>
             <h1 className='app-title'>
-              <Link to='/'>TV Bland</Link>
+              <Link to={getbaseUrl()}>TV Bland</Link>
             </h1>
-            <Route exact path='/' render={() => (
+            <Route exact path={getbaseUrl()} render={() => (
               <HomePage shows={this.state.shows} />
             )} />
-            <Route path='/show/:id' render={(props) => (
+            <Route path={`${getbaseUrl()}show/:id`} render={(props) => (
               <Show show={getShow(props.match.params.id)} />
             )} />
           </div>
