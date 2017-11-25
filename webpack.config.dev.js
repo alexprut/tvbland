@@ -18,8 +18,19 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin([
       {
-        from: 'img/*',
-        to: 'img'
+        from: 'src/img/*',
+        to: 'img',
+        force: true
+      },
+      {
+        from: 'node_modules/font-awesome/css/font-awesome.min.css',
+        to: 'css',
+        force: true
+      },
+      {
+        from: 'node_modules/font-awesome/fonts',
+        to: 'fonts',
+        force: true
       }
     ])
   ],
