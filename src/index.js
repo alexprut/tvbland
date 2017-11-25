@@ -14,6 +14,7 @@ function ShowThumbnail (props) {
   const ratingFullStars = [...Array(props.rating)].map((e, i) =>
     <i className='fa fa-star' aria-hidden='true' />
   )
+  // TODO remove the number of max star dependency (i.e. 5 should be replaced with a param)
   const ratingEmptyStars = [...Array(5 - props.rating)].map((e, i) =>
     <i className='fa fa-star-o' aria-hidden='true' />
   )
@@ -21,7 +22,7 @@ function ShowThumbnail (props) {
 
   return (
     <div className='show-thumbnail'>
-      <div className='show-thumbnail__image' style={{background: 'url(' + props.img + ')'}} />
+      <div className='show-thumbnail__image' style={{backgroundImage: 'url(' + props.img + ')'}} />
       <div className='show-thumbnail__rating'>
         {displayRatingStars}
       </div>
@@ -46,22 +47,48 @@ function Footer (props) {
 }
 
 function Show (props) {
+  // FIXME duplicated code (i.e. already used function within the ShowThumbnail component)
+  const ratingFullStars = [...Array(props.show.rating)].map((e, i) =>
+    <i className='fa fa-star' aria-hidden='true' />
+  )
+  // TODO remove the number of max star dependency (i.e. 5 should be replaced with a param)
+  const ratingEmptyStars = [...Array(5 - props.show.rating)].map((e, i) =>
+    <i className='fa fa-star-o' aria-hidden='true' />
+  )
+  const displayRatingStars = ratingFullStars.concat(ratingEmptyStars)
+
   const displayedCast = props.show.staring.map((e) =>
-    <li key={e.person.name.toString() + Math.random()}>{e.person.name} — {e.character.name}</li>
+    <div className='block' key={e.person.name.toString() + Math.random()}>
+      <span className='block__title'>{e.person.name}</span>
+      <span className='block__info'>{e.character.name}</span>
+    </div>
   )
 
   return (
     <div className='show'>
-      <img className='show__image' src={props.show.id} />
-      <div className='show__rating'>{props.show.rating}</div>
-      <div className='show__title'>{props.show.title}</div>
-      <div className='show__description'>{props.show.description}</div>
+      <div className='show__description'>
+        <div className='show__image' style={{backgroundImage: 'url(' + props.show.image + ')'}} />
+        <div className='show__rating'>{displayRatingStars}</div>
+        <div className='show__title'>{props.show.title}</div>
+        {props.show.description}
+      </div>
       <div className='show__info'>
-        <li>Schedule: {props.show.info.schedule}</li>
-        <li>Status: {props.show.info.status}</li>
-        <li>Genres: {props.show.info.genres.join(', ')}</li>
+        <h2>Show Info</h2>
+        <div className='block'>
+          <span className='block__title'>Schedule</span>
+          <span className='block__info'>{props.show.info.schedule}</span>
+        </div>
+        <div className='block'>
+          <span className='block__title'>Status</span>
+          <span className='block__info'>{props.show.info.status}</span>
+        </div>
+        <div className='block'>
+          <span className='block__title'>Genres</span>
+          <span className='block__info'>{props.show.info.genres.join(', ')}</span>
+        </div>
       </div>
       <div className='show__staring'>
+        <h2>Starring</h2>
         {displayedCast}
       </div>
     </div>
@@ -71,6 +98,7 @@ function Show (props) {
 Show.propTypes = {
   show: PropTypes.shape({
     id: PropTypes.number,
+    image: PropTypes.string,
     rating: PropTypes.string,
     title: PropTypes.string,
     description: PropTypes.string,
