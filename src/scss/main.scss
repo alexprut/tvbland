@@ -141,6 +141,12 @@ a:hover {
   line-height: 24px;
 }
 
+.show__description::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
 .show__info {
   float: left;
   clear: left;
@@ -223,6 +229,15 @@ a:hover {
 @media (max-width: 1176px) {
   .app-container {
     width: auto;
+  }
+
+  .show__info {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .show__staring {
+    width: 100%;
   }
 }
 
