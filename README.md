@@ -30,6 +30,37 @@ CSS Modules, and CSS-in-JS are all encouraged
 - [ ] Pagination
 - [ ] Performance optimisation
 
+---
+---
+---
+
+# Documentation
+Below are provided the instructions on how to install, build, further develop the application and the references to
+the deployed production demo website and the kanban board.
+
+### Install
+```
+npm install
+```
+
+### Build (Development)
+```
+npm run server
+```
+
+### Build (Production)
+```
+npm run build
+```
+
+### Demo
+A deployed version of the application is provided at the following link: [https://alexprut.github.io/tvbland/](https://alexprut.github.io/tvbland/)  
+The application is deployed on the GitHub pages service, since the service uses the `https` protocol please make sure to manually
+allow the browser to load the scripts (i.e. Load unsafe scripts).
+
+## Roadmap
+The Kanban Board can be found at the following address: [https://github.com/alexprut/tvbland/projects/1](https://github.com/alexprut/tvbland/projects/1)
+
 License
 =======
 Licensed under [MIT](https://github.com/alexprut/tvbland/blob/master/LICENSE).
