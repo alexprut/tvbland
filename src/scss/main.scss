@@ -32,8 +32,31 @@ a:hover {
   color: $black;
 }
 
+/**
+ Utilities
+ */
 .fa {
   margin-right: 3px;
+}
+
+.fa--gray {
+  color: $gray
+}
+
+.fa--gray-dark {
+  color: $gray-dark;
+}
+
+.color--gray {
+  color: $gray;
+}
+
+.color--gray-dark {
+  color: $gray-dark;
+}
+
+.color--black {
+  color: $black;
 }
 
 /**
@@ -138,22 +161,30 @@ a:hover {
 .block {
   line-height: 84px;
   font-size: 18px;
+  border-bottom: solid 1px $black;
+}
+
+.block__image {
+  display: inline-block;
   vertical-align: middle;
-  border-bottom: solid 2px $gray;
+  border-radius: 60px;
+  height: 60px;
+  width: 60px;
+  margin: 0 60px 0 0;
+  background: url("/img/default-show-image.png");
+  background-position: center center;
+  background-size: cover;
+  filter: grayscale(100%);
 }
 
 .block__title {
-  color: $gray-dark;
   min-width: 216px;
   display: inline-block;
 }
 
 .block__info {
-  color: $gray;
+  color: $gray-dark;
   display: inline-block;
-}
-
-.block__img {
 }
 
 /**

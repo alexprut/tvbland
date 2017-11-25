@@ -20,11 +20,11 @@ function getbaseUrl () {
 
 function ShowThumbnail (props) {
   const ratingFullStars = [...Array(props.rating)].map((e, i) =>
-    <i className='fa fa-star' aria-hidden='true' />
+    <i className='fa fa-star fa--gray-dark' aria-hidden='true' />
   )
   // TODO remove the number of max star dependency (i.e. 5 should be replaced with a param)
   const ratingEmptyStars = [...Array(5 - props.rating)].map((e, i) =>
-    <i className='fa fa-star-o' aria-hidden='true' />
+    <i className='fa fa-star fa--gray' aria-hidden='true' />
   )
   const displayRatingStars = ratingFullStars.concat(ratingEmptyStars)
 
@@ -57,17 +57,18 @@ function Footer (props) {
 function Show (props) {
   // FIXME duplicated code (i.e. already used function within the ShowThumbnail component)
   const ratingFullStars = [...Array(props.show.rating)].map((e, i) =>
-    <i className='fa fa-star' aria-hidden='true' />
+    <i className='fa fa-star fa--gray-dark' aria-hidden='true' />
   )
   // TODO remove the number of max star dependency (i.e. 5 should be replaced with a param)
   const ratingEmptyStars = [...Array(5 - props.show.rating)].map((e, i) =>
-    <i className='fa fa-star-o' aria-hidden='true' />
+    <i className='fa fa-star fa--gray' aria-hidden='true' />
   )
   const displayRatingStars = ratingFullStars.concat(ratingEmptyStars)
 
   const displayedCast = props.show.staring.map((e) =>
     <div className='block' key={e.person.name.toString() + Math.random()}>
-      <span className='block__title'>{e.person.name}</span>
+      <span className='block__image' style={{backgroundImage: 'url(' + e.person.image.medium + ')'}} />
+      <span className='block__title color--black'>{e.person.name}</span>
       <span className='block__info'>{e.character.name}</span>
     </div>
   )
@@ -83,15 +84,19 @@ function Show (props) {
       <div className='show__info'>
         <h2>Show Info</h2>
         <div className='block'>
-          <span className='block__title'>Schedule</span>
+          <span className='block__title color--black'>Streamed on</span>
+          <span className='block__info'>{props.show.info.streamedOn}</span>
+        </div>
+        <div className='block'>
+          <span className='block__title color--black'>Schedule</span>
           <span className='block__info'>{props.show.info.schedule}</span>
         </div>
         <div className='block'>
-          <span className='block__title'>Status</span>
+          <span className='block__title color--black'>Status</span>
           <span className='block__info'>{props.show.info.status}</span>
         </div>
         <div className='block'>
-          <span className='block__title'>Genres</span>
+          <span className='block__title color--black'>Genres</span>
           <span className='block__info'>{props.show.info.genres.join(', ')}</span>
         </div>
       </div>
@@ -112,6 +117,7 @@ Show.propTypes = {
     description: PropTypes.string,
     staring: PropTypes.array,
     info: PropTypes.shape({
+      streamedOn: PropTypes.string,
       schedule: PropTypes.string,
       status: PropTypes.string,
       genres: PropTypes.array
