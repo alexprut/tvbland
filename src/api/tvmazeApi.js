@@ -1,4 +1,5 @@
 import axios from 'axios'
+import * as utils from '../utilities'
 
 export function getFullSchedule (context, callback) {
   // TODO provide properer error handling
@@ -13,12 +14,12 @@ export function getFullSchedule (context, callback) {
           newState.push({
             id: e.show.id,
             title: e.show.name,
-            description: stripHtml(e.show.summary),
-            rating: (e.show.rating.average) ? fromBaseToBase(e.show.rating.average, 10, 5) : 0,
+            description: utils.stripHtml(e.show.summary),
+            rating: (e.show.rating.average) ? utils.fromBaseToBase(e.show.rating.average, 10, 5) : 0,
             image: e.show.image.medium,
             info: {
               streamedOn: e.show.network.name,
-              schedule: e.airdate,
+              schedule: utils.dateToDay(e.airdate),
               status: e.show.status,
               genres: e.show.genres
             },
@@ -41,16 +42,3 @@ export function getShowCast (context, callback, showId) {
     })
     .catch(function (error) { console.log(error) })
 }
-
-function fromBaseToBase (number, currentBase, desiredBase) {
-  return Math.round(number * desiredBase / currentBase)
-}
-
-// TODO this function should not be here (in some utility library)
-function stripHtml (html) {
-  let tmp = document.createElement('div')
-  tmp.innerHTML = html
-  return tmp.textContent || tmp.innerText || ''
-}
-
-// TODO convert machine readable dates in human readable dates

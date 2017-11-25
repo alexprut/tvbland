@@ -2,6 +2,7 @@ import './scss/main.scss'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import * as utils from './utilities'
 import * as TVMazeApi from './api/tvmazeApi'
 
 import {
@@ -9,14 +10,6 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-
-function getbaseUrl () {
-  if (process.env.NODE_ENV === 'production') {
-    return '/tvbland/'
-  }
-
-  return '/'
-}
 
 function ShowThumbnail (props) {
   const ratingFullStars = [...Array(props.rating)].map((e, i) =>
@@ -35,7 +28,7 @@ function ShowThumbnail (props) {
         {displayRatingStars}
       </div>
       <div className='show-thumbnail__description'>
-        <Link to={`${getbaseUrl()}show/${props.id}`}>{props.title}</Link>
+        <Link to={`${utils.getbaseUrl()}show/${props.id}`}>{props.title}</Link>
       </div>
     </div>
   )
@@ -189,12 +182,12 @@ class Application extends React.Component {
           <div className='app-background-helper' />
           <div className='app-container'>
             <h1 className='app-title'>
-              <Link to={getbaseUrl()}>TV Bland</Link>
+              <Link to={utils.getbaseUrl()}>TV Bland</Link>
             </h1>
-            <Route exact path={getbaseUrl()} render={() => (
+            <Route exact path={utils.getbaseUrl()} render={() => (
               <HomePage shows={this.state.shows} />
             )} />
-            <Route path={`${getbaseUrl()}show/:id`} render={(props) => (
+            <Route path={`${utils.getbaseUrl()}show/:id`} render={(props) => (
               <Show show={getShow(props.match.params.id)} />
             )} />
           </div>
